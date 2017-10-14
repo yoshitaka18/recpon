@@ -12,6 +12,7 @@ class RecruitmentsController < ApplicationController
 
   def create
     @recruitment = Recruitment.new(recruitments_params)
+    @recruitment.user_id = current_user.id
     if @recruitment.save
       redirect_to recruitments_path, notice: "募集しました"
     else
