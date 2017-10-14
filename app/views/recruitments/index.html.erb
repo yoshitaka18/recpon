@@ -1,0 +1,22 @@
+<div class="container">
+  <div class="wrapper col-md-8 col-md-offset-2 col-sm-10">
+    <p><%= notice %></p>
+    <h1>募集一覧</h1>
+
+    <%= link_to "募集する", new_recruitment_path, class: 'btn btn-default' %>
+
+    <% @recruitments.each do |recruitment| %>
+    <div class="row">
+      <p>タイトル:<%= recruitment.title %></p>
+      <p>募集内容:<%= recruitment.content %></p>
+      <p>コンセプト:<%= recruitment.concept %></p>
+      <p>期限:<%= recruitment.deadline %></p>
+      <p>写真:<%= recruitment.image_url %></p>
+      <p>地図:<%= recruitment.map_url %></p>
+      <%= link_to "編集する", edit_recruitment_path(recruitment.id), class: 'btn btn-sm btn-success' %>
+      <%= link_to "削除する", recruitment_path(recruitment.id), method: :delete, data: { confirm: '本当に削除していいですか？'}, class: 'btn btn-sm btn-danger' %>
+    </div>
+    <% end %>
+
+  </div>
+</div>

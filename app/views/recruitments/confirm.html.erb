@@ -1,0 +1,32 @@
+<div class="container">
+  <div class="col-md-6 col-md-offset-3 col-sm-10 col-sm-offset-1">
+    <h3>以下の内容で、送信する。</h3>
+
+    <%= form_for(@recruitment) do |f| %>
+      <%= f.hidden_field :title %>
+      <%= f.hidden_field :content %>
+      <%= f.hidden_field :concept %>
+      <%= f.hidden_field :deadline %>
+      <%= f.hidden_field :image_url %>
+      <%= f.hidden_field :map_url %>
+
+      <p>タイトル:<%= @recruitment.title %></p>
+      <p>募集内容:<%= @recruitment.content %></p>
+      <p>コンセプト:<%= @recruitment.concept %></p>
+      <p>期限:<%= @recruitment.deadline %></p>
+      <p>写真:<%= @recruitment.image_url %></p>
+      <p>地図:<%= @recruitment.map_url %></p>
+      <%= f.submit "登録する",class: 'btn btn-primary btn-block' %>
+    <% end %>
+
+    <%= form_for(@recruitment, url: new_recruitment_path, method: 'get') do |f| %>
+      <%= f.hidden_field :title %>
+      <%= f.hidden_field :content %>
+      <%= f.hidden_field :concept %>
+      <%= f.hidden_field :deadline %>
+      <%= f.hidden_field :image_url %>
+      <%= f.hidden_field :map_url %>
+      <%= f.submit "もどる", name: 'back', class: 'btn btn-default btn-block' %>
+    <% end %>
+  </div>
+</div>
