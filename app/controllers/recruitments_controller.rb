@@ -1,5 +1,6 @@
 class RecruitmentsController < ApplicationController
   before_action :set_recruitment, only: [:edit, :update, :destroy]
+  before_action :authenticate_user!
 
   def index
     @recruitments = Recruitment.all

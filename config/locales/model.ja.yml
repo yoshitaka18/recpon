@@ -1,0 +1,21 @@
+ja:
+  activerecord:
+    models:
+      recruitment: "募集"
+      application: "回答"
+      user: "ユーザー"
+    attributes:
+      recruitment:
+        title: "タイトル"
+        content: "募集内容"
+      application:
+        anser: "回答"
+      user:
+        title: "タイトル"
+        name: "名前"
+        email: "メールアドレス"
+        content: "内容"
+        current_password: "現在のパスワード"
+        password: "パスワード"
+        password_confirmation: "確認用パスワード"
+        remember_me: "ログインを記憶"
