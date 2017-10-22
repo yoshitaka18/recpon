@@ -8,14 +8,18 @@
     <% @recruitments.each do |recruitment| %>
     <div class="row">
       <p>募集者:<%= recruitment.user.name %></p>
-      <p>タイトル:<%= recruitment.title %></p>
+      <%= link_to recruitment_path(recruitment) do %>
+        <p>タイトル:<%= recruitment.title %></p>
+      <% end %>
       <p>募集内容:<%= recruitment.content %></p>
       <p>コンセプト:<%= recruitment.concept %></p>
       <p>期限:<%= recruitment.deadline %></p>
-      <p>写真:<%= recruitment.image_url %></p>
+      <p>写真:<%= link_to_unless recruitment.image_url.blank?, "イメージへ", recruitment.image_url, target: "_new" %></p>
       <p>地図:<%= recruitment.map_url %></p>
-      <%= link_to "編集する", edit_recruitment_path(recruitment.id), class: 'btn btn-sm btn-success' %>
-      <%= link_to "削除する", recruitment_path(recruitment.id), method: :delete, data: { confirm: '本当に削除していいですか？'}, class: 'btn btn-sm btn-danger' %>
+      <% if current_user.id == recruitment.user_id %>
+        <%= link_to "編集する", edit_recruitment_path(recruitment.id), class: 'btn btn-sm btn-success' %>
+        <%= link_to "削除する", recruitment_path(recruitment.id), method: :delete, data: { confirm: '本当に削除していいですか？'}, class: 'btn btn-sm btn-danger' %>
+      <% end %>
     </div>
     <% end %>
 

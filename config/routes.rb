@@ -1,14 +1,15 @@
 Rails.application.routes.draw do
 
+  get 'ansers/index'
+
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
   devise_for :users, controllers: {
     registrations: "users/registrations",
     omniauth_callbacks: "users/omniauth_callbacks"
   }
   resources :recruitments do
-    collection do
-      post :confirm
-    end
+    resources :ansers
+    post :confirm, on: :collection
   end
 
   root 'top#index'

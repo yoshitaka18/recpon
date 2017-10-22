@@ -1,9 +1,16 @@
 class RecruitmentsController < ApplicationController
-  before_action :set_recruitment, only: [:edit, :update, :destroy]
+  before_action :set_recruitment, only: [:edit, :update, :destroy, :show]
   before_action :authenticate_user!
 
   def index
     @recruitments = Recruitment.all
+  end
+
+  def show
+    if @recruitment.user_id != current_user.id
+      @anser = Anser.anser_current_user(current_user.id, @recruitment.id)
+    end
+#binding.pry
   end
 
   def new
@@ -42,6 +49,7 @@ class RecruitmentsController < ApplicationController
 
   def confirm
     @recruitment = Recruitment.new(recruitments_params)
+    render :new if @recruitment.invalid?
   end
 
   private

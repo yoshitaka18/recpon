@@ -4,7 +4,8 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable, :confirmable, :omniauthable
   mount_uploader :avatar, AvatarUploader
-  has_many :recruitments
+  has_many :recruitments, dependent: :destroy
+  has_many :ansers, dependent: :destroy
 
   def self.find_for_facebook_oauth(auth, signed_in_resource=nil)
     user = User.find_by(provider: auth.provider, uid: auth.uid)
