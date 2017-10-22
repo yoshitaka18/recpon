@@ -85,8 +85,10 @@ GEM
     ffi (1.9.18)
     font-awesome-rails (4.7.0.2)
       railties (>= 3.2, < 5.2)
+    geocoder (1.4.4)
     globalid (0.4.0)
       activesupport (>= 4.2.0)
+    gmaps4rails (2.1.2)
     grease (0.3.1)
     haml (5.0.4)
       temple (>= 0.8.0)
@@ -300,6 +302,8 @@ DEPENDENCIES
   devise
   dotenv-rails
   faker
+  geocoder
+  gmaps4rails
   jbuilder (~> 2.0)
   jquery-rails
   jquery-turbolinks

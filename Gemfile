@@ -57,6 +57,9 @@ gem 'omniauth-twitter'
 gem 'omniauth-facebook'
 gem 'carrierwave'
 gem 'mini_magick'
+# map
+gem 'gmaps4rails'
+gem 'geocoder'
 
 gem 'rails_12factor', group: :production
 
