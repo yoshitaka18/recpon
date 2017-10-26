@@ -2,14 +2,16 @@ ja:
   activerecord:
     models:
       recruitment: "募集"
-      application: "回答"
+      anser: "回答"
       user: "ユーザー"
     attributes:
       recruitment:
         title: "タイトル"
         content: "募集内容"
-      application:
+      anser:
         anser: "回答"
+        comment: "コメント"
+        adopt: "採用"
       user:
         title: "タイトル"
         name: "名前"

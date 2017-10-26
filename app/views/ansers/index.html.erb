@@ -3,13 +3,21 @@
     <p><%= notice %></p>
     <h1>応募一覧</h1>
 
+
+
     <% @ansers.each do |anser| %>
     <div class="row">
       <p>募集者:<%= anser.user.name %></p>
       <p>回答:<%= anser.anser %></p>
       <p>コメント:<%= anser.comment %></p>
+
+<div id="anser_<%= anser.id %>">
+    <%= render partial: 'ansers/index', locals: { anser: anser, recruitment: @recruitment } %>
+</div>
+
     </div>
     <% end %>
+    
 
     <%= link_to "募集内容へ戻る", recruitment_path(@recruitment) %>
 

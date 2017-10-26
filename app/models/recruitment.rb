@@ -8,8 +8,13 @@ class Recruitment < ActiveRecord::Base
     coords = Geocoder.coordinates(
       self.map_url # 住所
     )
-    self.latitude = coords[0]
-    self.longitude = coords[1]
+    if coords.nil?
+      self.latitude = nil
+      self.longitude = nil
+    else
+      self.latitude = coords[0]
+      self.longitude = coords[1]
+    end
   end
 
 end

@@ -61,6 +61,7 @@ gem 'mini_magick'
 gem 'gmaps4rails'
 gem 'geocoder'
 
+gem "font-awesome-rails"
 gem 'rails_12factor', group: :production
 
 group :development do

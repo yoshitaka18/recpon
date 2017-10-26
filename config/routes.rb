@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  put 'ansers/adopt_on_off'
+
   get 'ansers/index'
 
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'

@@ -1,0 +1,13 @@
+<%= Anser.human_attribute_name (:adopt) %>
+<% if anser.adopt %>
+<%= link_to "解除",
+ansers_adopt_on_off_path(anser: {anser_id: anser.id, adopt: false}), remote: true,
+                      method: :put,
+                      class: 'fa fa-check-square-o' %> 
+<% else %>
+<%= link_to Anser.human_attribute_name(:adopt),
+ansers_adopt_on_off_path(anser: {anser_id: anser.id, adopt: true}), remote: true,
+                      method: :put,
+                      class: 'fa fa-check-square-o' %> 
+<% end %>
+

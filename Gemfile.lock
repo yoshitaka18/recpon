@@ -302,6 +302,7 @@ DEPENDENCIES
   devise
   dotenv-rails
   faker
+  font-awesome-rails
   geocoder
   gmaps4rails
   jbuilder (~> 2.0)

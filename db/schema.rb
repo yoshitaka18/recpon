@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171022133053) do
+ActiveRecord::Schema.define(version: 20171023132310) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -21,8 +21,9 @@ ActiveRecord::Schema.define(version: 20171022133053) do
     t.integer  "recruitment_id"
     t.text     "anser"
     t.text     "comment"
-    t.datetime "created_at",     null: false
-    t.datetime "updated_at",     null: false
+    t.datetime "created_at",                     null: false
+    t.datetime "updated_at",                     null: false
+    t.boolean  "adopt",          default: false, null: false
   end
 
   add_index "ansers", ["recruitment_id"], name: "index_ansers_on_recruitment_id", using: :btree

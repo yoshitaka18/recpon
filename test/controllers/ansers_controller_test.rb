@@ -1,8 +1,8 @@
 require 'test_helper'
 
 class AnsersControllerTest < ActionController::TestCase
-  test "should get index" do
-    get :index
+  test "should get adopt_on_off" do
+    get :adopt_on_off
     assert_response :success
   end
 
