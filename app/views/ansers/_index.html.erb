@@ -1,13 +1,10 @@
-<%= Anser.human_attribute_name (:adopt) %>
 <% if anser.adopt %>
-<%= link_to "解除",
-ansers_adopt_on_off_path(anser: {anser_id: anser.id, adopt: false}), remote: true,
-                      method: :put,
-                      class: 'fa fa-check-square-o' %> 
+  <p><%= "採用結果：採用" %></p>
+  <%= link_to "解除", ansers_adopt_on_off_path(anser: {anser_id: anser.id, adopt: false}),
+      remote: true, method: :put, class: 'fa fa-square-o' %> 
 <% else %>
-<%= link_to Anser.human_attribute_name(:adopt),
-ansers_adopt_on_off_path(anser: {anser_id: anser.id, adopt: true}), remote: true,
-                      method: :put,
-                      class: 'fa fa-check-square-o' %> 
+  <p><%= "採用結果：不採用" %></p>
+  <%= link_to "採用", ansers_adopt_on_off_path(anser: {anser_id: anser.id, adopt: true}),
+      remote: true, method: :put, class: 'fa fa-check-square-o' %> 
 <% end %>
 
