@@ -9,8 +9,8 @@ class Recruitment < ActiveRecord::Base
       self.map_url # 住所
     )
     if coords.nil?
-      self.latitude = nil
-      self.longitude = nil
+      self.latitude=nil
+      self.longitude=nil
     else
       self.latitude = coords[0]
       self.longitude = coords[1]
