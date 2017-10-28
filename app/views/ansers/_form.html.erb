@@ -15,10 +15,10 @@
 
   <%= f.hidden_field :recruitment_id %>
   <%= f.label :anser %>
-  <%= f.text_field :anser, class: 'form-control' %>
+  <%= f.text_field :anser, class: 'form-control', required: true %>
   <br>
   <%= f.label :comment %>
-  <%= f.text_field :comment, class: 'form-control' %>
+  <%= f.text_area :comment, class: 'form-control', size: "100x5", required: true %>
   <br>
   <%= f.submit '応募', class: 'btn btn-primary btn-block' %>
 <% end %>

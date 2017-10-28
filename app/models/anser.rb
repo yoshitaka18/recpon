@@ -1,4 +1,5 @@
 class Anser < ActiveRecord::Base
+  validates :anser, :comment, presence: true
   belongs_to :user
   belongs_to :recruitment
 

@@ -1,53 +1,31 @@
 class AnsersController < ApplicationController
-
-  def adopt_on_off
-#binding.pry
-    #@anser = Anser.find(params[:format])
-    @anser = Anser.find(params[:anser][:anser_id])
-#redirect_to recruitment_path(@anser.recruitment)
-respond_to do |format|
-  if  @anser.update(anser_on_off_params)
-@recruitment =Recruitment.find(@anser.recruitment_id)
-#@ansers = @recruitment.ansers
-  format.js { render :adopt_on_off }
-end
-end
-  end
-
+  before_action :set_anser, only: [:edit, :update, :destroy]
+  before_action :set_recruitment, only: [:index, :new]
 
   def index
-    @recruitment = Recruitment.find(params[:recruitment_id])
     @ansers = @recruitment.ansers
   end
 
   def new
-    #@anser = Anser.new
-    #@anser = @recruitment.ansers.build
-#    @anser = current_user.ansers.build
-    @recruitment = Recruitment.find(params[:recruitment_id])
     @anser = @recruitment.ansers.build
   end
 
   def create
-binding.pry
-#    @recruitment = Recruitment.find(params[:recruitment_id])
     @anser = current_user.ansers.build(anser_params)
-#    @anser = @recruitment.ansers.build
 
     if @anser.save
-      redirect_to recruitments_path, notice: "応募しました！"
+      redirect_to recruitment_path(@anser.recruitment_id), notice: "応募しました！"
     else
-      render 'new'
+      #redirect_to root_path
+      render :new
     end
   end
 
   def edit
-    @anser = Anser.find(params[:id])
     @recruitment = @anser.recruitment
   end
     
   def update
-    @anser = Anser.find(params[:id])
     if @anser.update(anser_params)
       redirect_to recruitment_path(@anser.recruitment), notice: "応募内容を更新しました"
     else
@@ -56,10 +34,20 @@ binding.pry
   end
 
   def destroy
-    @anser = Anser.find(params[:id])
     @anser.destroy
     redirect_to recruitment_path(@anser.recruitment), notice: "応募内容を削除しました"
   end
+
+  def adopt_on_off
+    @anser = Anser.find(params[:anser][:anser_id])
+    respond_to do |format|
+      if  @anser.update(anser_on_off_params)
+        @recruitment =Recruitment.find(@anser.recruitment_id)
+        format.js { render :adopt_on_off }
+      end
+    end
+  end
+
 
   private
     # ストロングパラメーター
@@ -68,6 +56,14 @@ binding.pry
     end
     def anser_on_off_params
       params.require(:anser).permit(:adopt)
+    end
+
+    def set_anser
+      @anser = Anser.find(params[:id])
+    end
+
+    def set_recruitment
+      @recruitment = Recruitment.find(params[:recruitment_id])
     end
 
 end

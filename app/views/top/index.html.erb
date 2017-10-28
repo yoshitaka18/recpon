@@ -1,48 +1,23 @@
 <section class="main-header">
   <p class="flash"><%= notice %><%= alert %></p>
-  <img src="<%= asset_path "header.png" %>">
+  <img src="<%= asset_path "craft-2798848_1920.jpg" %>"><br><br>
+  <p><a href="#about" class="btn btn-info">About RecPon !</a></p>
 </section>
-<section class="about">
-  <h1>About Achieve</h1>
+<section class="about" id="about">
+  <h1>About RecPon !</h1>
   <p>
-     Achieveは、受講生のために作成された、教材用アプリです。<br>
-     Achieveを作り終えることで、SecondTeamに参加するための力を身につけることができます。
+     RecPonは、テーマパークやお店などの名前募集サイトです。<br>
+     みなさまの想いをカタチにするお手伝いをします。
   </p>
   <p>
-     Acheiveを一言で表すと、タスク管理アプリです。<br>
-     チームメンバーが、今どのようなタスクを行っているかリアルタイムで把握すること ができます。
+     名前を募集することも応募することもできます。<br>
+     ぜひみなさまの想いを発信し名前を募集しませんか？<br>
+     アイデア豊富なあなた、名前を考えてみませんか？
   </p>
-</section>
-<section class="function container-fluid">
-  <div class="row">
-  <h1>Function</h1>
-    <div class="function-images">
-      <div class="col-md-3 col-sm-6">
-        <div class="function-image">
-          <img src="<%= asset_path "key.png" %>">
-          <p>ログイン機能</p>
-        </div>
-      </div>
-      <div class="col-md-3 col-sm-6">
-        <div class="function-image">
-          <img src="<%= asset_path "mails.png" %>">
-          <p>メール送信機能</p>
-        </div>
-      </div>
-      <div class="col-md-3 col-sm-6">
-        <div class="function-image">
-          <img src="<%= asset_path "girls.png" %>">
-          <p>友達つながり機能</p>
-        </div>
-      </div>
-      <div class="col-md-3 col-sm-6">
-        <div class="function-image">
-          <img src="<%= asset_path "comment.png" %>">
-          <p>コメント投稿機能</p>
-        </div>
-      </div>
-    </div>
-  </div>
+  <p>
+     さあ始めましょう！！！<br><br>
+     <a href="<%= recruitments_path %>" class="btn btn-info">募集・応募はこちら</a><br><br>
+  </p>
 </section>
 <div id="page-top-btn" class="page-top-btn">
     <p><a class="move-page-top" id="move-page-top">▲</a></p>

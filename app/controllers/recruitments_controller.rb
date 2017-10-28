@@ -10,7 +10,6 @@ class RecruitmentsController < ApplicationController
     if @recruitment.user_id != current_user.id
       @anser = Anser.anser_current_user(current_user.id, @recruitment.id)
     end
-#binding.pry
   end
 
   def new
@@ -28,21 +27,18 @@ class RecruitmentsController < ApplicationController
   end
 
   def edit
-    #@recruitment = Recruitment.find(params[:id])
   end
 
   def update
-    #@recruitment = Recruitment.find(params[:id])
-
     if @recruitment.update(recruitments_params)
-      redirect_to recruitments_path, notice: "募集を更新しました！"
+      #redirect_to recruitments_path, notice: "募集を更新しました！"
+      redirect_to recruitment_path(@recruitment), notice: "募集を更新しました！"
     else
       render 'edit'
     end
   end
 
   def destroy
-    #@recruitment = Recruitment.find(params[:id])
     @recruitment.destroy
     redirect_to recruitments_path, notice: "募集を削除しました！"
   end

@@ -17,10 +17,10 @@
   <%= f.text_field :title, class: 'form-control' %>
   <br>
   <%= f.label :content %>
-  <%= f.text_field :content, class: 'form-control' %>
+  <%= f.text_area :content, class: 'form-control', size: "100x3" %>
   <br>
   <%= f.label :concept %>
-  <%= f.text_field :concept, class: 'form-control' %>
+  <%= f.text_area :concept, class: 'form-control', size: "100x5" %>
   <br>
   <%= f.label :deadline %>
   <%= f.datetime_select :deadline, class: 'form-control' %>

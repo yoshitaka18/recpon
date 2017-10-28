@@ -1,43 +1,96 @@
 <div class="container">
-  <div class="wrapper col-md-8 col-md-offset-2 col-sm-10">
+  <div class="wrapper col-md-10 col-md-offset-2 col-sm-12">
     <p><%= notice %></p>
     <h1>募集詳細</h1>
 
     <div class="row">
-      <p>募集者:<%= @recruitment.user.name %></p>
-      <p>タイトル:<%= @recruitment.title %></p>
-      <p>募集内容:<%= @recruitment.content %></p>
-      <p>コンセプト:<%= @recruitment.concept %></p>
-      <p>期限:<%= @recruitment.deadline %></p>
-      <p>写真:<%= @recruitment.image_url %></p>
-      <p>地図:<%= @recruitment.map_url %></p>
-      <% if @recruitment.latitude.nil? || @recruitment.longitude.nil? %>
-        <p>地図情報はありません。</p>
-      <% else %>
- <div style='width: 100%;'>
-   <div id="map" style='width: 100%; height: 33vh;'></div>
- </div>
-      <% end %>
+      <table class="company">
+        <tbody>
+          <tr>
+            <th class="arrow_box">募集者</div></th>
+            <td><%= @recruitment.user.name %></td>
+          </tr>
+          <tr>
+            <th class="arrow_box">タイトル</th>
+            <td><%= @recruitment.title %></td>
+          </tr>
+          <tr>
+            <th class="arrow_box">募集内容</th>
+            <td><%= @recruitment.content %></td>
+          </tr>
+          <tr>
+            <th class="arrow_box">コンセプト</th>
+            <td><%= @recruitment.concept %></td>
+          </tr>
+          <tr>
+            <th class="arrow_box">期限</th>
+            <td><%= @recruitment.deadline %></td>
+          </tr>
+          <tr>
+            <th class="arrow_box">イメージ</th>
+            <td><%= link_to_unless @recruitment.image_url.blank?, "イメージへ", @recruitment.image_url, target: "_new" %></td>
+          </tr>
+          <tr>
+            <th class="arrow_box">住所</th>
+            <td><%= @recruitment.map_url %></td>
+          </tr>
+          <tr>
+            <th class="arrow_box">地図</th>
+            <td>
+              <% if @recruitment.latitude.nil? || @recruitment.longitude.nil? %>
+                <p>※地図表示情報はありません。</p>
+              <% else %>
+                <div style='width: 100%;'>
+                <div id="map" style='width: 100%; height: 33vh;'></div>
+                </div>
+              <% end %>
+            </td>
+          </tr>
+        </tbody>
+      </table>
       <%= link_to "編集する", edit_recruitment_path(@recruitment.id), class: 'btn btn-sm btn-success' %>
       <%= link_to "削除する", recruitment_path(@recruitment.id), method: :delete, data: { confirm: '本当に削除していいですか？'}, class: 'btn btn-sm btn-danger' %>
     </div>
-      <% if current_user.id != @recruitment.user_id %>
-        <% if @anser.blank? %>
-          <%= link_to "応募する", new_recruitment_anser_path(@recruitment.id), class: 'btn btn-sm btn-success' %>
-        <% else %>
+    <br>
+
+    <% if current_user.id != @recruitment.user_id %>
+      <h4>【あなたの応募内容】</h4>
+      <% if @anser.blank? %>
+        <p><%= link_to "応募する", new_recruitment_anser_path(@recruitment.id), class: 'btn btn-sm btn-success' %></p>
+      <% else %>
+        <div class="row2">
           <% @anser.each do |anser| %>
-            <p>回答:<%= anser.anser %></p>
-            <p>回答:<%= anser.comment %></p>
+            <table class="company">
+              <tbody>
+                <tr>
+                  <th class="arrow_box">回答</div></th>
+                  <td><%= anser.anser %></td>
+                </tr>
+                <tr>
+                  <th class="arrow_box">コメント</div></th>
+                  <td><%= anser.comment %></td>
+                </tr>
+                <tr>
+                  <th class="arrow_box">採用状況</div></th>
+                  <td>
+                    <% if anser.adopt %>
+                      <div class="adopt">採用</div>
+                    <% end %>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
             <%= link_to "編集する", edit_recruitment_anser_path(anser.recruitment_id, anser.id), class: 'btn btn-sm btn-success' %>
             <%= link_to "削除する", recruitment_anser_path(anser.recruitment_id, anser.id), method: :delete, data: { confirm: '本当に削除していいですか？'}, class: 'btn btn-sm btn-danger' %>
           <% end %>
-        <% end %>
-      <% else %>
-        <!-- 応募一覧へ -->
-        <%= link_to "応募一覧", recruitment_ansers_path(@recruitment.id), class: 'btn btn-sm btn-success' %>
+        </div>
       <% end %>
-      <br>
-      <%= link_to "募集一覧へ戻る",recruitments_path, class: 'btn btn-sm btn-success' %>
+    <% else %>
+      <!-- 応募一覧へ -->
+      <p><%= link_to "応募一覧表示", recruitment_ansers_path(@recruitment.id), class: 'btn btn-sm btn-info' %></p>
+    <% end %>
+    <br>
+    <%= link_to "募集一覧へ戻る",recruitments_path %>
 
   </div>
 </div>

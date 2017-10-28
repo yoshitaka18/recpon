@@ -8,6 +8,10 @@ ja:
       recruitment:
         title: "タイトル"
         content: "募集内容"
+        concept: "コンセプト"
+        deadline: "期限"
+        image_url: "イメージURL"
+        map_url: "住所"
       anser:
         anser: "回答"
         comment: "コメント"
