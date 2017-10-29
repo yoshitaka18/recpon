@@ -48,8 +48,10 @@
           </tr>
         </tbody>
       </table>
-      <%= link_to "編集する", edit_recruitment_path(@recruitment.id), class: 'btn btn-sm btn-success' %>
-      <%= link_to "削除する", recruitment_path(@recruitment.id), method: :delete, data: { confirm: '本当に削除していいですか？'}, class: 'btn btn-sm btn-danger' %>
+      <% if current_user.id == @recruitment.user_id %>
+        <%= link_to "編集する", edit_recruitment_path(@recruitment.id), class: 'btn btn-sm btn-success' %>
+        <%= link_to "削除する", recruitment_path(@recruitment.id), method: :delete, data: { confirm: '本当に削除していいですか？'}, class: 'btn btn-sm btn-danger' %>
+      <% end %>
     </div>
     <br>
 
